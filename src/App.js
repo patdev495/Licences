@@ -4,7 +4,7 @@ import DefaultLayout from './Layouts/DefaultLayout/DefaultLayout';
 function App() {
     return (
         <div className="App">
-            <DefaultLayout></DefaultLayout>
+            <Login></Login>
         </div>
     );
 }

@@ -4,17 +4,15 @@ import { Form, Input, Button } from 'antd';
 const cx = classNames.bind(styles);
 function Login() {
     const onFinish = () => {};
+    const regexLength = /^.{8,}$/;
+    const regexSpecial = /^(?=.*[A-Z])(?=.*[@#$%^&*!]).+$/;
 
     const validatorPassword = (rule, value, callback) => {
-        const regexLength = /^.{8,}$/;
-        const regexSpecial =
-            /^(?=.*[A-Z])(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?])(?=.*[a-z]).{8,}$/;
-
-        if (value && !regexLength.test(value)) {
+        if (!value) callback('Bạn chưa nhập mật khẩu');
+        else if (!regexLength.test(value)) {
             callback('Mật khẩu tối thiểu 8 kí tự');
-        } else if (regexSpecial.test(value))
-            callback('Mật khẩu phải chứa kí tự viết Hoa và Kí tự đặc biệt!');
-        else callback();
+        } else if (!regexSpecial.test(value))
+            callback('Mật khẩu chứa ít nhất 1 chữ hoa và 1 kí tự đặc biệt');
     };
 
     return (
@@ -32,6 +30,10 @@ function Login() {
                     name="username"
                     rules={[
                         { required: true, message: 'Bạn chưa nhập email!' },
+                        {
+                            type: 'email',
+                            message: 'Địa chỉ email không hợp lệ',
+                        },
                     ]}
                 >
                     <Input placeholder="Nhập địa chỉ email"></Input>
@@ -41,11 +43,7 @@ function Login() {
                     className={cx('form-Item')}
                     label="Mật khẩu"
                     name="password"
-                    dependencies={['password']}
-                    rules={[
-                        { required: true, message: 'Bạn chưa nhập mật khẩu!' },
-                        { validator: validatorPassword },
-                    ]}
+                    rules={[{ validator: validatorPassword }]}
                 >
                     <Input placeholder="Nhập mật khẩu" type="password"></Input>
                 </Form.Item>
