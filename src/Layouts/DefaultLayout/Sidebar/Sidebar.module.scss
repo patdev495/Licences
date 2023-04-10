@@ -30,6 +30,8 @@
 
         li {
             border-radius: 0px;
+            display: flex;
+            align-items: center;
             &:hover {
                 background-color: white !important;
                 color: black !important;

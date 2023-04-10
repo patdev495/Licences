@@ -7,9 +7,11 @@ const cx = classNames.bind(styles);
 
 function Login() {
     const [loading, setLoading] = useState(false);
+    const [checkLogin, setCheckLogin] = useState(false);
     const [form] = Form.useForm();
     const navigate = useNavigate();
     const onFinish = (value) => {
+        setCheckLogin(false);
         setLoading(true);
         if (
             value.email === '1111@gmail.com' &&
@@ -22,6 +24,7 @@ function Login() {
         } else {
             setTimeout(() => {
                 setLoading(false);
+                setCheckLogin(true);
             }, 1000);
         }
     };
@@ -74,7 +77,11 @@ function Login() {
                 >
                     <Input placeholder="Nhập mật khẩu" type="password"></Input>
                 </Form.Item>
-
+                {checkLogin && (
+                    <div className={cx('loginFail')} style={{ color: 'red' }}>
+                        Sai tên đăng nhập hoặc mật khẩu!
+                    </div>
+                )}
                 <Form.Item>
                     <Button
                         block

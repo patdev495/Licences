@@ -4,7 +4,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: white url('../../assets/images/loginbackground.svg');
+
+    background: url('../../assets/images/loginbackground.svg') center no-repeat;
 
     Form {
         width: 561px;
