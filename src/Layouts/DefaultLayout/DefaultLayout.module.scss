@@ -1,15 +1,5 @@
-.sidebar-header {
-    display: flex;
-    justify-content: center;
-
-    .title {
-        color: #035ba9;
-        font-size: 32px;
-        font-weight: 700;
-        letter-spacing: 4px;
+.DefaultLayout {
+    .Content {
+        height: calc(100vh - 52px);
     }
-}
-
-.sidebar {
-    background-color: #151b26;
 }

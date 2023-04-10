@@ -19,5 +19,12 @@ body {
     height: 100%;
 }
 
-.ant-input {
+.ant-menu-item-selected {
+    background-color: white !important;
+    color: black !important;
+    font-weight: 700;
+
+    path {
+        fill: black;
+    }
 }

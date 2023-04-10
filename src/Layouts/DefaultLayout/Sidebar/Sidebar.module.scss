@@ -1,0 +1,48 @@
+.Sidebar {
+    background-color: #151b26;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    min-width: 192px;
+    z-index: 10;
+
+    .Sidebar-Header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px 0;
+        border-bottom: 1px solid white;
+        h4 {
+            color: #035ba9;
+            font-size: 29px;
+            letter-spacing: 3px;
+        }
+    }
+
+    path {
+        fill: #e5e6e7;
+    }
+
+    .MainMenu {
+        background-color: #151b26;
+        color: #e5e6e7 !important;
+
+        li {
+            border-radius: 0px;
+            &:hover {
+                background-color: white !important;
+                color: black !important;
+                font-weight: 700;
+
+                path {
+                    fill: black;
+                }
+            }
+        }
+
+        a {
+            color: #e5e6e7;
+        }
+    }
+}
