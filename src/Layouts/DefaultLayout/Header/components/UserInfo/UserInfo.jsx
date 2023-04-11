@@ -9,10 +9,11 @@ const cx = classNames.bind(styles);
 function UserInfo({ setOpenInfomation }) {
     return (
         <Dropdown
+            trigger="click"
             className={cx('Dropdown')}
             dropdownRender={() => (
                 <Menu
-                    style={{ padding: '20px' }}
+                    style={{ padding: '20px', cursor: 'pointer' }}
                     items={[
                         {
                             key: '0',

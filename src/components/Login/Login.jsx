@@ -32,8 +32,10 @@ function Login() {
     const regexSpecial = /^(?=.*[A-Z])(?=.*[@#$%^&*!]).+$/;
 
     const validatorPassword = (rule, value) => {
-        if (!value) return Promise.reject('Bạn chưa nhập mật khẩu');
-        else if (!regexLength.test(value)) {
+        if (!value) {
+            console.log(rule);
+            return Promise.reject('Bạn chưa nhập mật khẩu');
+        } else if (!regexLength.test(value)) {
             return Promise.reject('Mật khẩu tối thiểu 8 kí tự');
         } else if (!regexSpecial.test(value))
             return Promise.reject(
@@ -50,6 +52,7 @@ function Login() {
                 requiredMark={false}
                 form={form}
                 onFinish={onFinish}
+                validateTrigger="onChange"
             >
                 <h1 onClick={() => navigate(-1)} className={cx('Form-title')}>
                     CyRadar License Management
