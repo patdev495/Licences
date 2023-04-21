@@ -28,6 +28,7 @@ function Sidebar() {
                     {
                         label: 'Sản Phẩm',
                         icon: <Computer />,
+                        // onClick: () => navigate('product'),
                     },
                     { label: 'Khách Hàng', icon: <Client /> },
                 ]}

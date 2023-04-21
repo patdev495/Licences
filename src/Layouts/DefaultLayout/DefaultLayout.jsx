@@ -6,6 +6,7 @@ import styles from './DefaultLayout.module.scss';
 import classNames from 'classnames/bind';
 import Sider from 'antd/es/layout/Sider';
 import Header from './Header/Header';
+import { Outlet } from 'react-router-dom';
 const cx = classNames.bind(styles);
 function DefaultLayout({ children }) {
     return (
@@ -15,7 +16,8 @@ function DefaultLayout({ children }) {
             </Col>
             <Col span={21}>
                 <Header />
-                <Content className={cx('Content')}>{children}</Content>
+                {/* <Content className={cx('Content')}>{children}</Content> */}
+                <Outlet />
             </Col>
         </Row>
     );
