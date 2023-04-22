@@ -5,6 +5,7 @@ import DefaultLayout from './Layouts/DefaultLayout/DefaultLayout';
 import { loginRoutes } from './routes/loginRoutes';
 import Home from './components/Home/Home';
 import LayoutAdmin from './components/Admin/LayoutAdmin';
+import Product from './pages/Product/Product';
 
 function App() {
     return (
@@ -15,7 +16,7 @@ function App() {
                     path="/"
                     element={<LayoutAdmin>{/* <Home></Home> */}</LayoutAdmin>}
                 >
-                    {/* <Route path="product" element={<Product />} /> */}
+                    <Route path="product" element={<Product />} />
                 </Route>
             </Routes>
         </div>

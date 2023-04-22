@@ -23,7 +23,7 @@ const items = [
         icon: <Licence />,
     },
     {
-        label: <Link to="">Sản Phẩm</Link>,
+        label: <Link to="/product">Sản Phẩm</Link>,
         key: 'Sản Phẩm',
         icon: <Computer />,
     },
@@ -112,7 +112,13 @@ function LayoutAdmin() {
                         />
                     </div>
                 </div>
-                <Content>
+                <Content
+                    style={{
+                        margin: '3px 6px',
+                        padding: '10px',
+                        background: 'rgb(255,255,255)',
+                    }}
+                >
                     <Outlet />
                 </Content>
             </Layout>
