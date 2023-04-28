@@ -3,7 +3,7 @@ import classNames from 'classnames/bind';
 import { Table, Row, Col, Button } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { useState } from 'react';
-import ModalCreateProduct from '../../components/Product/ModalCreateProduct';
+import ModalCreateProduct from '../../components/Admin/Product/ModalCreateProduct';
 
 const cx = classNames.bind(styles);
 
@@ -29,6 +29,16 @@ const colums = [
     {
         title: 'Trạng thái',
         dataIndex: 'status',
+        render: (text, record) => {
+            return {
+                props: {
+                    style: {
+                        color: text === 'Đã kích hoạt' ? '#2D8CF0' : '#FE3821',
+                    },
+                },
+                children: <div>{text}</div>,
+            };
+        },
         filters: [
             {
                 text: 'Đã kích hoạt',
