@@ -3,7 +3,7 @@ import styles from './UserInfo.module.scss';
 import { Dropdown, Menu } from 'antd';
 import { Link } from 'react-router-dom';
 import { ReactComponent as User } from '~/assets/images/client.svg';
-import { useState } from 'react';
+
 const cx = classNames.bind(styles);
 
 function UserInfo({ setOpenInfomation }) {

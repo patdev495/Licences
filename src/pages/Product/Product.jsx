@@ -1,74 +1,13 @@
 import styles from './Product.module.scss';
 import classNames from 'classnames/bind';
 import { Table, Row, Col, Button } from 'antd';
-import { EllipsisOutlined } from '@ant-design/icons';
+
 import { useState } from 'react';
 import ModalCreateProduct from '../../components/Admin/Product/ModalCreateProduct';
+import DropdownInformation from '~/components/Admin/Product/DropdownInformation';
+import './Product.module.scss';
 
 const cx = classNames.bind(styles);
-
-const colums = [
-    {
-        title: 'STT',
-        dataIndex: 'key',
-    },
-    {
-        title: 'Tên',
-        dataIndex: 'name',
-        sorter: true,
-    },
-    {
-        title: 'Thời điểm tạo',
-        dataIndex: 'create_time',
-        sorter: true,
-    },
-    {
-        title: 'Người tạo',
-        dataIndex: 'user',
-    },
-    {
-        title: 'Trạng thái',
-        dataIndex: 'status',
-        render: (text, record) => {
-            return {
-                props: {
-                    style: {
-                        color: text === 'Đã kích hoạt' ? '#2D8CF0' : '#FE3821',
-                    },
-                },
-                children: <div>{text}</div>,
-            };
-        },
-        filters: [
-            {
-                text: 'Đã kích hoạt',
-                value: 'Đã kích hoạt',
-            },
-            {
-                text: 'Không kích hoạt',
-                value: 'Không kích hoạt',
-            },
-        ],
-        onFilter: (value, record) => record.status.indexOf(value) === 0,
-    },
-    {
-        title: 'Cập nhật lần cuối',
-        dataIndex: 'last_time',
-        sorter: true,
-    },
-    {
-        title: '',
-        render: (text, record, index) => {
-            return (
-                <>
-                    <span>
-                        <EllipsisOutlined />
-                    </span>
-                </>
-            );
-        },
-    },
-];
 
 const data = [
     {
@@ -111,33 +50,95 @@ const onChange = (pagination, filters, sorter, extra) => {
 
 function Product() {
     const [openModalCreate, setOpenModalCreate] = useState(false);
+    const [dataProduct, setDataProduct] = useState({});
+
+    const colums = [
+        {
+            title: 'STT',
+            dataIndex: 'key',
+        },
+        {
+            title: 'Tên',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            title: 'Thời điểm tạo',
+            dataIndex: 'create_time',
+            sorter: true,
+        },
+        {
+            title: 'Người tạo',
+            dataIndex: 'user',
+        },
+        {
+            title: 'Trạng thái',
+            dataIndex: 'status',
+            render: (text, record) => {
+                return {
+                    props: {
+                        style: {
+                            color:
+                                text === 'Đã kích hoạt' ? '#2D8CF0' : '#FE3821',
+                        },
+                    },
+                    children: <div>{text}</div>,
+                };
+            },
+            filters: [
+                {
+                    text: 'Đã kích hoạt',
+                    value: 'Đã kích hoạt',
+                },
+                {
+                    text: 'Không kích hoạt',
+                    value: 'Không kích hoạt',
+                },
+            ],
+            onFilter: (value, record) => record.status.indexOf(value) === 0,
+        },
+        {
+            title: 'Cập nhật lần cuối',
+            dataIndex: 'last_time',
+            sorter: true,
+        },
+        {
+            title: '',
+            render: (text, record, index) => {
+                return (
+                    <span
+                        onClick={() => {
+                            setDataProduct(record);
+                        }}
+                    >
+                        <DropdownInformation dataProduct={dataProduct} />
+                    </span>
+                );
+            },
+        },
+    ];
+
     return (
-        <>
-            <Row gutter={[20, 20]}>
-                <Col span={24}>
-                    <div className={cx('title')}>
-                        <p>Table List Product</p>
-                        <Button
-                            type="primary"
-                            onClick={() => setOpenModalCreate(true)}
-                        >
-                            Add Product
-                        </Button>
-                    </div>
-                </Col>
-                <Col span={24}>
-                    <Table
-                        columns={colums}
-                        dataSource={data}
-                        onChange={onChange}
-                    />
-                </Col>
-                <ModalCreateProduct
-                    openModalCreate={openModalCreate}
-                    setOpenModalCreate={setOpenModalCreate}
-                />
-            </Row>
-        </>
+        <Row gutter={[20, 20]}>
+            <Col span={24}>
+                <div className={cx('title')}>
+                    <p>Table List Product</p>
+                    <Button
+                        type="primary"
+                        onClick={() => setOpenModalCreate(true)}
+                    >
+                        Add Product
+                    </Button>
+                </div>
+            </Col>
+            <Col span={24}>
+                <Table columns={colums} dataSource={data} onChange={onChange} />
+            </Col>
+            <ModalCreateProduct
+                openModalCreate={openModalCreate}
+                setOpenModalCreate={setOpenModalCreate}
+            />
+        </Row>
     );
 }
 

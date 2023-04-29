@@ -1,21 +1,27 @@
+import { useEffect } from 'react';
+
 const { Modal, Divider, Form, Input, Row, Col } = require('antd');
 
-function ModalCreateProduct(props) {
-    const { openModalCreate, setOpenModalCreate } = props;
+function ModalUpdateProduct(props) {
+    const { openModalUpdate, setOpenModalUpdate, dataProduct } = props;
     // const [isSubmit, setIsSubmit] = useState(false);
 
     const [form] = Form.useForm();
 
+    useEffect(() => {
+        form.setFieldsValue(dataProduct);
+    }, [dataProduct]);
+
     return (
         <>
             <Modal
-                title="Thêm mới sản phẩm"
-                open={openModalCreate}
+                title="Cập nhật sản phẩm"
+                open={openModalUpdate}
                 onOk={() => {
                     form.submit();
                 }}
-                onCancel={() => setOpenModalCreate(false)}
-                okText={'Tạo mới'}
+                onCancel={() => setOpenModalUpdate(false)}
+                okText={'Cập nhật'}
                 cancelText={'Hủy'}
                 centered={true}
                 maskClosable={false}
@@ -128,4 +134,4 @@ function ModalCreateProduct(props) {
     );
 }
 
-export default ModalCreateProduct;
+export default ModalUpdateProduct;
