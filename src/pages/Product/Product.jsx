@@ -1,7 +1,6 @@
 import styles from './Product.module.scss';
 import classNames from 'classnames/bind';
 import { Table, Row, Col, Button } from 'antd';
-
 import { useState } from 'react';
 import ModalCreateProduct from '../../components/Admin/Product/ModalCreateProduct';
 import DropdownInformation from '~/components/Admin/Product/DropdownInformation';
@@ -13,6 +12,11 @@ const data = [
     {
         key: '1',
         name: 'Phuong',
+        own: 'Công ty mô giới bất động sản',
+        email: '123@gmail.com',
+        phone_number: '012345678',
+        address: 'Hà Nội',
+        descript: 'abc',
         create_time: '14:41 11/2/2002',
         user: 'Admin',
         status: 'Đã kích hoạt',
@@ -21,6 +25,11 @@ const data = [
     {
         key: '2',
         name: 'Thanh',
+        own: 'Công ty Toyota',
+        email: '456@gmail.com',
+        phone_number: '0125876678',
+        address: 'Thanh Hóa',
+        descript: 'xyz',
         create_time: '13:11 14/2/2002',
         user: 'Admin',
         status: 'Đã kích hoạt',
@@ -29,6 +38,11 @@ const data = [
     {
         key: '3',
         name: 'Nghia',
+        own: 'Công ty SamSung',
+        email: 'samsung@gmail.com',
+        phone_number: '02154678',
+        address: 'Korea',
+        descript: 'good',
         create_time: '6:00 10/3/2002',
         user: 'User',
         status: 'Không kích hoạt',
@@ -37,6 +51,11 @@ const data = [
     {
         key: '4',
         name: 'Hue',
+        own: 'Công ty xăng dầu Thành Đạt',
+        email: 'datthanh@gmail.com',
+        phone_number: '092928898',
+        address: 'Hà Nội',
+        descript: 'abc',
         create_time: '7:00 22/4/2002',
         user: 'User',
         status: 'Không kích hoạt',
@@ -61,6 +80,31 @@ function Product() {
             title: 'Tên',
             dataIndex: 'name',
             sorter: true,
+        },
+        {
+            title: 'Sở hữu',
+            dataIndex: 'own',
+            hidden: true,
+        },
+        {
+            title: 'Email',
+            dataIndex: 'email',
+            hidden: true,
+        },
+        {
+            title: 'Số điện thoại',
+            dataIndex: 'phone_number',
+            hidden: true,
+        },
+        {
+            title: 'Địa chỉ',
+            dataIndex: 'address',
+            hidden: true,
+        },
+        {
+            title: 'Mô tả',
+            dataIndex: 'descript',
+            hidden: true,
         },
         {
             title: 'Thời điểm tạo',
@@ -116,7 +160,7 @@ function Product() {
                 );
             },
         },
-    ];
+    ].filter((item) => !item.hidden);
 
     return (
         <Row gutter={[20, 20]}>

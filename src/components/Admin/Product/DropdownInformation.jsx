@@ -2,24 +2,39 @@ import { Dropdown, Space } from 'antd';
 import { EllipsisOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import ModalUpdateProduct from './ModalUpdateProduct';
+import { useNavigate } from 'react-router-dom';
 
 function DropdownInformation(props) {
     const { dataProduct } = props;
-    console.log(dataProduct);
-
     const [openModalUpdate, setOpenModalUpdate] = useState(false);
+    console.log('>>> dataProduct: ', dataProduct);
+    const navigate = useNavigate();
 
     const items = [
         {
-            label: 'Xem thông tin',
+            label: (
+                <span onClick={() => navigate('product/:id')}>
+                    Xem thông tin
+                </span>
+            ),
             key: '0',
         },
         {
-            label: <a onClick={() => setOpenModalUpdate(true)}>Cập nhật</a>,
+            label: (
+                <span onClick={() => setOpenModalUpdate(true)}>Cập nhật</span>
+            ),
             key: '1',
         },
         {
-            label: 'Hủy kích hoạt',
+            label: (
+                <>
+                    {dataProduct && dataProduct.status === 'Đã kích hoạt' ? (
+                        <span style={{ color: '#FE3821' }}>Hủy kích hoạt</span>
+                    ) : (
+                        <span style={{ color: '#2D8CF0' }}>Kích hoạt</span>
+                    )}
+                </>
+            ),
             key: '3',
         },
     ];

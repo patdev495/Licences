@@ -59,7 +59,7 @@ function ModalUpdateProduct(props) {
                             <Form.Item
                                 labelCol={{ span: 24 }}
                                 label="Sở hữu"
-                                name="name2"
+                                name="own"
                                 rules={[
                                     {
                                         required: true,
@@ -90,7 +90,7 @@ function ModalUpdateProduct(props) {
                             <Form.Item
                                 labelCol={{ span: 24 }}
                                 label="Số điện thoại"
-                                name="phone"
+                                name="phone_number"
                                 rules={[
                                     {
                                         required: true,
@@ -122,7 +122,7 @@ function ModalUpdateProduct(props) {
                             <Form.Item
                                 labelCol={{ span: 24 }}
                                 label="Mô tả"
-                                name="describe"
+                                name="descript"
                             >
                                 <Input.TextArea rows={4} />
                             </Form.Item>
