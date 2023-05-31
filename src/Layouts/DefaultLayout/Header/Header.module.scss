@@ -1,43 +1,8 @@
-.Header {
-    height: 52px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .Activities {
+.layout-admin {
+    .admin-header {
+        height: 52px;
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        margin-right: 20px;
-        & > Button {
-            border-radius: 3px;
-            font-size: 14px;
-            padding: 6px 33px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-        }
-
-        .Noti {
-            scale: 1;
-        }
-
-        .Search {
-            position: relative;
-        }
-
-        .Search > button {
-            border: none !important;
-        }
-
-        .Message {
-            display: block;
-            width: 100px;
-            height: 11px;
-            border-radius: 48%;
-        }
-
-        & > * {
-            margin: 0 10px;
-        }
     }
 }

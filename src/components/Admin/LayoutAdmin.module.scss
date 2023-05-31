@@ -1,0 +1,56 @@
+.sidebar-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid white;
+    h4 {
+        color: #035ba9;
+        font-size: 29px;
+        letter-spacing: 3px;
+    }
+}
+
+.admin-header {
+    height: 52px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .Activities {
+        display: flex;
+        align-items: center;
+        margin-right: 20px;
+        & > Button {
+            border-radius: 3px;
+            font-size: 14px;
+            padding: 6px 33px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+        }
+
+        .Noti {
+            scale: 1;
+        }
+
+        .Search {
+            position: relative;
+        }
+
+        .Search > button {
+            border: none !important;
+        }
+
+        .Message {
+            display: block;
+            width: 100px;
+            height: 11px;
+            border-radius: 48%;
+        }
+
+        & > * {
+            margin: 0 10px;
+        }
+    }
+}
