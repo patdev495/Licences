@@ -7,7 +7,7 @@ import { ReactComponent as Client } from '~/assets/images/client.svg';
 import { ReactComponent as Notification } from '~/assets/images/notification.svg';
 import { Layout, Menu, Button, Input, Badge } from 'antd';
 import { MenuFoldOutlined, MenuUnfoldOutlined } from '@ant-design/icons';
-import UserInfo from '../../Layouts/DefaultLayout/Header/components/UserInfo/UserInfo';
+import UserInfo from './Header/UserInfo/UserInfo';
 import UserInfomation from '~/components/UserInfomation/UserInfomation';
 import { Link, Outlet } from 'react-router-dom';
 import { useState } from 'react';

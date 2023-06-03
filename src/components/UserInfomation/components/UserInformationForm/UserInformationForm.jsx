@@ -1,5 +1,3 @@
-import classNames from 'classnames';
-import styles from './UserInformationForm.module.scss';
 import { Form, Input } from 'antd';
 
 function UserInformationForm() {

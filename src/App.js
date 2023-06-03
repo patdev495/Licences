@@ -1,12 +1,8 @@
 import { Route, Routes } from 'react-router-dom';
-import Login from './components/Login/Login';
-import Sidebar from './Layouts/DefaultLayout/Sidebar/Sidebar';
-import DefaultLayout from './Layouts/DefaultLayout/DefaultLayout';
-import { loginRoutes } from './routes/loginRoutes';
-import Home from './components/Home/Home';
-import LayoutAdmin from './components/Admin/LayoutAdmin';
+import Login from './pages/Login/Login';
+import LayoutAdmin from './Layouts/LayoutAdmin';
 import Product from './pages/Product/Product';
-import ProductDetail from './components/Admin/Product/ProductDetail';
+import ProductDetail from './components/Product/ProductDetail';
 
 function App() {
     return (
@@ -17,9 +13,8 @@ function App() {
                     path="/"
                     element={<LayoutAdmin>{/* <Home></Home> */}</LayoutAdmin>}
                 >
-                    <Route path="product" element={<Product />}>
-                        <Route path=":id" element={<ProductDetail />}></Route>
-                    </Route>
+                    <Route path="/product" element={<Product />} />
+                    <Route path="/product/:id" element={<ProductDetail />} />
                 </Route>
             </Routes>
         </div>

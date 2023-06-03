@@ -1,33 +1,34 @@
-import { Button, Form, Input } from 'antd';
+import { Button, Form, Input, message, notification } from 'antd';
 import classNames from 'classnames/bind';
 import styles from './Login.module.scss';
 import { useNavigate } from 'react-router-dom';
+import { CallLogin } from '~/api/user/login';
 import { useState } from 'react';
 const cx = classNames.bind(styles);
 
 function Login() {
-    const [loading, setLoading] = useState(false);
-    const [checkLogin, setCheckLogin] = useState(false);
+    const [isSubmit, setIsSubmit] = useState(false);
     const [form] = Form.useForm();
     const navigate = useNavigate();
-    const onFinish = (value) => {
-        setCheckLogin(false);
-        setLoading(true);
-        if (
-            value.email === '1111@gmail.com' &&
-            value.password === '11111111@A'
-        ) {
-            setTimeout(() => {
-                setLoading(false);
-                navigate('/');
-            }, 1000);
+    const onFinish = async (value) => {
+        const { email, password } = value;
+        setIsSubmit(true);
+        const res = await CallLogin(email, password);
+        setIsSubmit(false);
+        console.log(res);
+        if (res?.data) {
+            localStorage.setItem('access_token', res.data.Data.access_token);
+            message.success('Đăng nhập thành công');
+            navigate('/');
         } else {
-            setTimeout(() => {
-                setLoading(false);
-                setCheckLogin(true);
-            }, 1000);
+            notification.error({
+                message: 'Có lỗi xảy ra',
+                description: <>Tài khoản hoặc mật khẩu không chính xác</>,
+                duration: 5,
+            });
         }
     };
+
     const regexLength = /^.{8,}$/;
     const regexSpecial = /^(?=.*[A-Z])(?=.*[@#$%^&*!]).+$/;
 
@@ -75,20 +76,20 @@ function Login() {
                     name="password"
                     rules={[{ validator: validatorPassword }]}
                 >
-                    <Input placeholder="Nhập mật khẩu" type="password"></Input>
+                    <Input.Password placeholder="Nhập mật khẩu" />
                 </Form.Item>
-                {checkLogin && (
+                {/* {checkLogin && (
                     <div className={cx('loginFail')} style={{ color: 'red' }}>
                         Sai tên đăng nhập hoặc mật khẩu!
                     </div>
-                )}
+                )} */}
                 <Form.Item>
                     <Button
                         block
                         type="primary"
                         htmlType="submit"
                         className={cx('form-Item')}
-                        loading={loading}
+                        loading={isSubmit}
                     >
                         Đăng nhập
                     </Button>

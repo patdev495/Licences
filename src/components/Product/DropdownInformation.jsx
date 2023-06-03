@@ -7,13 +7,13 @@ import { useNavigate } from 'react-router-dom';
 function DropdownInformation(props) {
     const { dataProduct } = props;
     const [openModalUpdate, setOpenModalUpdate] = useState(false);
-    console.log('>>> dataProduct: ', dataProduct);
+
     const navigate = useNavigate();
 
     const items = [
         {
             label: (
-                <span onClick={() => navigate('product/:id')}>
+                <span onClick={() => navigate(`/product/${dataProduct.key}`)}>
                     Xem thông tin
                 </span>
             ),

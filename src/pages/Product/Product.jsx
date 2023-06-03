@@ -2,8 +2,8 @@ import styles from './Product.module.scss';
 import classNames from 'classnames/bind';
 import { Table, Row, Col, Button } from 'antd';
 import { useState } from 'react';
-import ModalCreateProduct from '../../components/Admin/Product/ModalCreateProduct';
-import DropdownInformation from '~/components/Admin/Product/DropdownInformation';
+import ModalCreateProduct from '~/components/Product/ModalCreateProduct';
+import DropdownInformation from '~/components/Product/DropdownInformation';
 import './Product.module.scss';
 
 const cx = classNames.bind(styles);
