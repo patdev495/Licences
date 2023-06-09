@@ -118,7 +118,7 @@ function Product() {
         {
             title: 'Trạng thái',
             dataIndex: 'status',
-            render: (text, record) => {
+            render: (text) => {
                 return {
                     props: {
                         style: {

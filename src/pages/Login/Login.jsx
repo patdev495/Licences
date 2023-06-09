@@ -15,7 +15,6 @@ function Login() {
         setIsSubmit(true);
         const res = await CallLogin(email, password);
         setIsSubmit(false);
-        console.log(res);
         if (res?.data) {
             localStorage.setItem('access_token', res.data.Data.access_token);
             message.success('Đăng nhập thành công');

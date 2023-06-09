@@ -1,10 +1,28 @@
+import { useState } from 'react';
+import { CreateProduct } from '~/api/product/createProduct';
+
 const { Modal, Divider, Form, Input, Row, Col } = require('antd');
 
 function ModalCreateProduct(props) {
     const { openModalCreate, setOpenModalCreate } = props;
-    // const [isSubmit, setIsSubmit] = useState(false);
-
+    const [isSubmit, setIsSubmit] = useState(false);
     const [form] = Form.useForm();
+
+    const onFinish = async (values) => {
+        const { name, description, company, email, phone, address, status } =
+            values;
+        setIsSubmit(true);
+        const res = await CreateProduct(
+            name,
+            description,
+            company,
+            email,
+            phone,
+            address,
+            status,
+        );
+        console.log(res);
+    };
 
     return (
         <>
@@ -20,7 +38,7 @@ function ModalCreateProduct(props) {
                 centered={true}
                 maskClosable={false}
                 style={{ textAlign: 'center' }}
-                // confirmLoading={isSubmit}
+                confirmLoading={isSubmit}
             >
                 <Divider />
 
@@ -28,7 +46,7 @@ function ModalCreateProduct(props) {
                     form={form}
                     name="basic"
                     style={{ maxWidth: 600 }}
-                    // onFinish={onFinish}
+                    onFinish={onFinish}
                     autoComplete="off"
                 >
                     <Row gutter={[20, 10]}>
@@ -96,7 +114,7 @@ function ModalCreateProduct(props) {
                                 <Input />
                             </Form.Item>
                         </Col>
-                        <Col span={24}>
+                        <Col span={12}>
                             <Form.Item
                                 labelCol={{ span: 24 }}
                                 label="Địa chỉ"
@@ -105,6 +123,22 @@ function ModalCreateProduct(props) {
                                     {
                                         required: true,
                                         message: 'Địa chỉ không được để trống',
+                                    },
+                                ]}
+                            >
+                                <Input />
+                            </Form.Item>
+                        </Col>
+                        <Col span={12}>
+                            <Form.Item
+                                labelCol={{ span: 24 }}
+                                label="Trạng Thái"
+                                name="status"
+                                rules={[
+                                    {
+                                        required: true,
+                                        message:
+                                            'Trạng thái không được để trống',
                                     },
                                 ]}
                             >

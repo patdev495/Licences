@@ -28,7 +28,7 @@ const items = [
         icon: <Computer />,
     },
     {
-        label: <Link to="">Khách Hàng</Link>,
+        label: <Link to="/customer">Khách Hàng</Link>,
         key: 'Khách Hàng',
         icon: <Client />,
     },
